@@ -1,0 +1,15 @@
+@startuml
+title
+  <font size=16 color=black><b>Data Access Object
+end title
+control Controller
+entity DAO
+database Database
+
+Controller -> DAO : CRUD-запит
+note over DAO: <b>DAO</b> надає API\nдля роботи з БД
+DAO -> Database : Запит мовою бази даних
+Database -> DAO : Результати виконання запиту
+DAO -> Controller : Результат CRUD-запиту
+note over Controller: Результат повертається\n у форматі даних\n предметної області
+@enduml

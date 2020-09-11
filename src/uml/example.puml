@@ -1,0 +1,12 @@
+@startuml
+Actor User
+participant github
+participant plantuml.com
+User -> github: Перегляд "file_with_uml".md
+github --> User: Візуалізований HTML з тегом <img> 
+User -> plantuml.com: Запит до plantuml proxy
+plantuml.com -> github: Запит на отримання опису діаграми
+github --> plantuml.com : Опис діаграми (puml) 
+plantuml.com -> plantuml.com: Візуалізація діаграми
+plantuml.com --> User: Зображення діаграми в форматі png 
+@enduml
