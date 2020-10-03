@@ -18,10 +18,10 @@ Boar має вигляд низки таблиць, які ви самі мож�
 ![Interface concept](/docs/images/readme-interface-concept.png)
 
 ## Над проектом працюють:
-- Братішко. О. / https://github.com/EzjikNiko
-- Брязкало М. / https://github.com/mihailBz
-- Гученко С. / https://github.com/sofiaguchenko
-- Кійченко А. / https://github.com/a6ln8ka
-- Копернак Е. / https://github.com/liza2403
-- Андрей Т. / https://github.com/drewg3r
-- Щурик Є. / https://github.com/Modizan
+- Братішко. О. / [github](https://github.com/EzjikNiko)
+- Брязкало М. / [github](https://github.com/mihailBz)
+- Гученко С. / [github](https://github.com/sofiaguchenko)
+- Кійченко А. / [github](https://github.com/a6ln8ka)
+- Копернак Є. / [github](https://github.com/liza2403)
+- Андрій Т. / [github](https://github.com/drewg3r)
+- Щурик Є. / [github](https://github.com/Modizan)
