@@ -1,0 +1,27 @@
+@startuml
+title
+    <font size=18 color=black>UC_06: Управляти командою
+    <font size=16 color=black>Діаграма прецедентів
+end title
+
+actor :Керівник Групи: as TeamLead
+  
+  usecase "**UC_06**\nУправляти командою" as TL
+
+  usecase "**UC_06.001**\nДодати учасника" as AU #FFFFFF
+  usecase "**UC_06.002**\nПереглянути список\nучасників команди" as UL #FFFFFF
+  
+  usecase "**UC_06.002.1**\nЗастосувати фільтр" as UF #FFFFFF
+  usecase "**UC_06.002.2**\nВидалити учасника" as DU #FFFFFF
+  usecase "**UC_06.002.3**\nЗмінити роль учасника" as CR #FFFFFF
+
+  
+  TeamLead -r-> TL
+  
+  UL-l->UF
+  
+  UL .u.>TL : extends
+  AU .u.>TL : extends
+  DU .u.>UL : extends
+  CR .u.>UL : extends
+@enduml

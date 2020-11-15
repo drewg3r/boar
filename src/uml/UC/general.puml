@@ -1,0 +1,52 @@
+@startuml
+usecase UC_01 as "<b>UC_01</b>\nУвійти\nв систему"
+usecase UC_02 as "<b>UC_02</b>\nРеєстрація"
+usecase UC_03 as "<b>UC_03</b>\nУправляти\nпроєктами"
+usecase UC_04 as "<b>UC_04</b>\nМиттєвий чат"
+usecase UC_05 as "<b>UC_05</b>\nУправляти\nзавданнями"
+usecase UC_06 as "<b>UC_06</b>\nУправляти\nкомандою"
+usecase UC_07 as "<b>UC_07</b>\nСтворити\nзавдання"
+usecase UC_08 as "<b>UC_08</b>\nСтворити/змінити\nтехнічне завдання"
+usecase UC_09 as "<b>UC_09</b>\nПереглянути\nпрогрес"
+usecase UC_10 as "<b>UC_10</b>\nУправляти\nартефактами"
+
+
+actor :Гость: as guest
+actor :Користувач: as user
+actor :Тестувальник: as tester
+actor :Розробник: as developer
+actor :Керівник Групи: as TL
+actor :Менеджер Проєкту: as PM
+actor :Замовник: as client
+
+guest -r-> UC_01
+guest -d-> UC_02
+
+user -r-|> guest
+user --> UC_03
+
+developer -r---|> user
+developer --> UC_04
+developer --> UC_05
+developer --> UC_10
+
+tester -d-|> developer
+
+TL -r--|> developer
+TL --> UC_07
+TL --> UC_06
+
+PM -r---|> TL
+PM --> UC_08
+
+client -d-|> PM
+client -l-> UC_09
+
+note right of (client)
+    Недоступно:
+        UC_06.001
+        UC_06.002.2
+        UC_06.002.3
+end note
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+
+title
+    <font size=18 color=black>UC_02: Реєстрація
+    <font size=16 color=black>Діаграма прецедентів
+end title
+
+actor Гість as guest
+
+
+usecase "**UC_02**\nРеєстрація" as UC_02
+
+usecase "**UC_02.001**\nРеєстрація за\nдопомогою соц. мереж" as UC_02.001 #OOEAOO
+
+usecase "**UC_02.002**\nЗвичайна реєстрація" as UC_02.002 #OOEAOO
+
+usecase "**UC_02.002.1**\nБезпосередньо реєстрація" as UC_02.002.1 #OOEAOO
+usecase "**UC_02.002.2**\nЗапит на підтвердження\nреєстрації" as UC_02.002.2  #OOEAOO
+
+
+guest --r-> UC_02
+
+UC_02.001 .u.> UC_02 : extends
+UC_02.002 .u.> UC_02 : extends
+
+UC_02.002.1 .u.> UC_02.002 : extends
+UC_02.002.2 .u.> UC_02.002 : extends
+
+@enduml
