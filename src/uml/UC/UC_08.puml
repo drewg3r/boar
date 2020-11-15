@@ -5,7 +5,6 @@ title
     <font size=16 color=black>Діаграма прецедентів
 end title
 
-actor :Користувач: as user
 actor :Менеджер проєкту: as PM
 
 
@@ -19,7 +18,6 @@ usecase "**UC_08.002.1**\nПереглянути історію\nзмін ТЗ" 
 
 usecase "**UC_03.002.1.1**\nЗастосувати фільтр" as UC_08.002.1.1 #OOEAOO
 
-user --l-> UC_08
 PM --r-> UC_08
 
 
