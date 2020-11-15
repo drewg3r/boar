@@ -1,7 +1,7 @@
 @startuml
 
 title
-    <font size=18 color=black>UC_08: Створити/змінити\n технічне завдання
+    <font size=18 color=black>UC_08: Створити/змінити технічне завдання
     <font size=16 color=black>Діаграма прецедентів
 end title
 
