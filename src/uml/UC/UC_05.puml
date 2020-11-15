@@ -1,0 +1,37 @@
+@startuml
+
+title
+    <font size=18 color=black>UC_05: Управляти завданнями
+    <font size=16 color=black>Діаграма прецедентів
+end title
+
+actor Розробник
+
+usecase UC_05 as "<b>UC_05</b>\nУправляти \nзавданнями"  
+usecase UC_07 as "<b>UC_07</b>\nСтворити \nзавдання"  
+usecase UC_05.001 as "<b>UC_05.001</b>\nПереглянути \nсписок завдань" #OOEAOO 
+usecase UC_05.002 as "<b>UC_05.002</b>\nЗастосувати \nфільтр" #OOEAOO 
+usecase UC_05.003 as "<b>UC_05.003</b>\nЗмінити завдання" #OOEAOO 
+usecase UC_05.004 as "<b>UC_05.004</b>\nВидалити завдання" #OOEAOO 
+usecase UC_05.005 as "<b>UC_05.005</b>\nЗмінити стан завдання" #OOEAOO 
+usecase UC_05.006 as "<b>UC_05.006</b>\nЗакріпити завдання за \nучасником проекту" #OOEAOO 
+usecase UC_05.007 as "<b>UC_05.007</b>\nЗастосувати \nфільтр" #OOEAOO 
+usecase UC_05.008 as "<b>UC_05.009</b>\nПереглянути \nісторію статусів" #OOEAOO 
+usecase UC_05.009 as "<b>UC_05.010</b>\nЗастосувати \nфільтр" #OOEAOO 
+usecase UC_05.010 as "<b>UC_05.008</b>\nПереглянути історію \nзмін завдання" #OOEAOO 
+
+Розробник -r-> UC_05
+
+UC_07 -l-> UC_05.001
+UC_05.001 .l.> UC_05
+UC_05.002 .u.> UC_05.001 : extends
+UC_05.003 .u.> UC_05.001 : extends
+UC_05.004 .u.> UC_05.001 : extends
+UC_05.005 .u.> UC_05.003 : extends
+UC_05.006 .u.> UC_05.003 : extends
+UC_05.007 .u.> UC_05.006 : extends
+UC_05.008 .u.> UC_05.010 : extends
+UC_05.009 .u.> UC_05.008 : extends
+UC_05.010 .u.> UC_05.003 : extends
+
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+
+title
+    <font size=18 color=black>UC_08: Створити/змінити\n технічне завдання
+    <font size=16 color=black>Діаграма прецедентів
+end title
+
+actor :Користувач: as user
+actor :Менеджер проєкту: as PM
+
+
+usecase "**UC_08**\nСтворити/змінити\n технічне завдання" as UC_08
+
+usecase "**UC_08.001**\nСтворити ТЗ" as UC_08.001 #OOEAOO
+
+usecase "**UC_08.002**\nРедагувати ТЗ" as UC_08.002 #OOEAOO
+
+usecase "**UC_08.002.1**\nПереглянути історію\nзмін ТЗ" as UC_08.002.1 #OOEAOO
+
+usecase "**UC_03.002.1.1**\nЗастосувати фільтр" as UC_08.002.1.1 #OOEAOO
+
+user --l-> UC_08
+PM --r-> UC_08
+
+
+UC_08.001 .u.> UC_08 : extends
+UC_08.002 .u.> UC_08: extends
+
+UC_08.002.1 .u.> UC_08.002 : extends
+
+UC_08.002.1.1 .u.> UC_08.002.1 : extends
+
+
+
+@enduml

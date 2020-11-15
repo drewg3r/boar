@@ -1,0 +1,26 @@
+@startuml
+
+title
+    <font size=18 color=black>UC_10: Управляти артефактами
+    <font size=16 color=black>Діаграма прецедентів
+end title
+
+actor Розробник
+
+usecase UC_10 as "<b>UC_10</b>\nУправляти артефактами"  
+usecase UC_10.001 as "<b>UC_10.001</b>\nПереглянути \nсписок артефактів" #OOEAOO 
+usecase UC_10.002 as "<b>UC_10.002</b>\nЗастосувати \nфільтр" #OOEAOO 
+usecase UC_10.003 as "<b>UC_10.003</b>\nРедагувати артефакт" #OOEAOO 
+usecase UC_10.004 as "<b>UC_10.004</b>\nВидалити артефакт" #OOEAOO
+usecase UC_10.005 as "<b>UC_10.005</b>\nСтворити артефакт" #OOEAOO
+
+Розробник -r-> UC_10
+
+UC_10.001 .u.> UC_10
+UC_10.002 .u.> UC_10.001 : extends
+UC_10.003 .u.> UC_10.001 : extends
+UC_10.004 .u.> UC_10.001 : extends
+UC_10.005 .u.> UC_10.001 : extends
+
+
+@enduml

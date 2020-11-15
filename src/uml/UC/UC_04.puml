@@ -1,0 +1,47 @@
+@startuml
+
+
+    title
+        <font size=18 color=black>UC_04. Миттєвий чат  
+        <font size=16 color=black>Діаграма прецедентів
+    end title
+
+   
+    usecase "<b>UC_04</b>\nМиттєвий чат" as UC_04
+
+    actor "Розробник" as Dev #eeee99
+
+    usecase "<b>UC_04.001</b>\nПереглянути список чатів" as UC_04.0 #OOEAOO
+    
+    usecase "<b>UC_04.001.1</b>\nСтворити чат" as UC_04.1 #OOEAOO
+    usecase "<b>UC_04.001.2</b>\nПокинути чат" as UC_04.2 #OOEAOO
+    usecase "<b>UC_04.001.3</b>\nВідправити повідомлення \nдо чату/користувача" as UC_04.3 #OOEAOO
+    usecase "<b>UC_04.001.4</b>\nНалаштувати \nпараметри чату" as UC_04.4 #OOEAOO
+    
+    usecase "<b>UC_04.001.1.1</b>\nНадати назву чату" as UC_04.1.1 #OOEAOO
+    usecase "<b>UC_04.001.1.2</b>\nДодати учасників" as UC_04.1.2 #OOEAOO
+    
+    usecase "<b>UC_04.001.4.1</b>\nВвімкнути/вимкнути \nповідомлення " as UC_04.4.1 #OOEAOO
+    usecase "<b>UC_04.001.4.2</b>\nДодати/видалити \nучасників" as UC_04.4.2 #OOEAOO
+    usecase "<b>UC_04.001.4.3</b>\nЗмінити назву чату" as UC_04.4.3 #OOEAOO
+
+
+    Dev -l-> UC_04
+    
+    UC_04.0 .u.> UC_04: extends
+
+    UC_04.1 .u.> UC_04.0: extends
+    UC_04.2 .u.> UC_04.0: extends
+    UC_04.3 .u.> UC_04.0: extends
+    UC_04.4 .u.> UC_04.0: extends
+    
+    UC_04.1.1 .u.> UC_04.1: extends
+    UC_04.1.2 .u.> UC_04.1: extends
+    
+    UC_04.4.1 .u.> UC_04.4: extends
+    UC_04.4.2 .u.> UC_04.4: extends
+    UC_04.4.3 .u.> UC_04.4: extends
+
+  
+ 
+@enduml
