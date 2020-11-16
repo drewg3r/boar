@@ -15,12 +15,12 @@
 **Виключні ситуації:**
  - EX_U3.01: Не всі поля було заповнено 
  - EX_U3.02: Неправильно введені значення даних
- - EX_U3.03: user.statys зі значенням "Не підтверджено"
+ - EX_U3.03: user.status зі значенням 0(не підтверджено)
  - EX_U3.04: Неможливий доступ до бази даних   
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_01.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_01.puml)
 
 
 ## Сценарії для UC_02(Реєстрація):
@@ -43,7 +43,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_02_001.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_02_001.puml)
 
 
 **ID:** UC_02.2
@@ -64,7 +64,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_02_002.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_02_002.puml)
 
 
 ## Сценарії для UC_03(Управління проєктами):
@@ -85,7 +85,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_03.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_03.puml)
 
 
 ## Сценарії для UC_05(Управління завданнями):
@@ -108,7 +108,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_07.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_07.puml)
 
 
 **ID:** UC_05.2
@@ -128,7 +128,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_05_003.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_05_003.puml)
 
 
 **ID:** UC_05.3
@@ -145,7 +145,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_05_004.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_05_004.puml)
 
 
 ## Сценарії для UC_08(Створити/змінити ТЗ):
@@ -166,7 +166,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_08_001.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_08_001.puml)
 
 
 **ID:** UC_08.2
@@ -185,7 +185,7 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_08_002.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_08_002.puml)
 
 
 ## Сценарії для UC_09(Переглянути прогрес):
@@ -205,4 +205,4 @@
 
 **Основний сценарій:**
 
-![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/scenarios/src/uml/UC/scenario/UC_10.puml)
+![uml](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/drewg3r/boar/master/src/uml/UC/scenario/UC_10.puml)
