@@ -1,0 +1,104 @@
+@startuml
+entity Task
+  entity Task.name
+  entity Task.text
+  entity Task.datetime
+  entity Task.status
+  entity Task.deadline
+  entity Task.author
+  entity Task.assignedTo
+
+  object Task.inDevelopment  #ffffff
+  object Task.pendingTesting  #ffffff
+  object Task.Testing  #ffffff
+  object Task.pendingReview  #ffffff
+  object Task.Done  #ffffff
+  
+  entity Specification
+  entity Specification.name
+  entity Specification.text
+  entity Specification.datetime
+  entity Specification.deadline
+  entity Specification.author
+  
+  entity Project
+  entity Project.name
+  entity Project.description
+  
+  entity User
+  entity User.email
+  entity User.password
+  entity User.username
+  entity User.avatar
+  entity User.status
+  
+  entity Access
+  
+  entity Role
+  object Developer  #ffffff
+  object Tester  #ffffff
+  object Teamlead  #ffffff
+  object PM  #ffffff
+  
+  entity Artifact
+  entity Artifact.name
+  entity Artifact.description
+  entity Artifact.link
+  entity Artifact.status
+
+  object Artifact.created  #ffffff
+  object Artifact.notCreated  #ffffff
+  
+  
+  Task.name -u-* Task
+  Task.text -u-* Task
+  Task.datetime -u-* Task
+  Task.status -d-* Task
+  Task.deadline -u-* Task
+  Task.author -u-* Task
+  Task.assignedTo -u-* Task
+  
+  Specification.name --* Specification
+  Specification.text --* Specification
+  Specification.datetime -l-* Specification
+  Specification.deadline -u-* Specification
+  Specification.author -u-* Specification
+  
+  Project.name -u-* Project
+  Project.description -u-* Project
+  
+  User.email -u-* User
+  User.password -u-* User
+  User.username -u-* User
+  User.avatar -l-* User
+  User.status -d-* User
+  
+  Developer ..> Role : instanceOf 
+  Tester ..> Role : instanceOf 
+  Teamlead ..> Role : instanceOf 
+  PM ..> Role : instanceOf 
+  
+  Artifact.name -u-* Artifact
+  Artifact.description -u-* Artifact
+  Artifact.link -u-* Artifact
+  Artifact.status -u-* Artifact
+  
+  Access "(0,*)"--"(1,1)" Project
+  Access "(0,*)"--"(1,1)" User
+  Access "(0,*)"-u-"(1,1)" Role
+  
+  Task "(0,*)"-u-"(1,1)" Specification
+  
+  Task "(1,1)"--"(0,*)" Artifact
+  
+  Specification "(0,*)"-l-"(1,1)" Project
+
+  Artifact.created .u.> Artifact.status : instanceOf 
+  Artifact.notCreated .u.> Artifact.status : instanceOf 
+
+  Task.inDevelopment .d.> Task.status : instanceOf 
+  Task.pendingTesting .d.> Task.status : instanceOf 
+  Task.Testing .d.> Task.status : instanceOf 
+  Task.pendingReview .d.> Task.status : instanceOf 
+  Task.Done .d.> Task.status : instanceOf
+@enduml
