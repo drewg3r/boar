@@ -1,0 +1,52 @@
+@startuml
+entity User <<ENTITY>> {
+		email: EMAIL
+		password: PASSWORD
+		username: TEXT
+        avatar: LINK
+        USER.status: NUMBER
+	}
+	
+	entity Access <<ENTITY>> {
+		role: ROLE
+	}
+	
+	entity Project <<ENTITY>> {
+		name: TEXT
+		description: TEXT
+	}
+	
+	entity Specification <<ENTITY>> {
+		name: TEXT
+		text: TEXT
+		datetime: DATE
+        author: USER
+        deadline: DATE
+	}
+	
+	entity Task <<ENTITY>> {
+		name: TEXT
+		text: TEXT
+        datetime: DATE
+        deadline: DATE
+        author: USER
+        assignedTo: USER
+        TASK.status: STATUS
+	}
+	
+	entity Artifact <<ENTITY>> {
+		name: TEXT
+		description: TEXT
+        link: LINK
+        ARTIFACT.status: STATUS
+	}
+	
+    Access "(0,*)"--"(1,1)" User
+    Access "(0,*)"--"(1,1)" Project
+    
+    Task "(0,*)"-u-"(1,1)" Specification
+  
+    Task "(1,1)"--"(0,*)" Artifact
+  
+    Specification "(0,*)"-u-"(1,1)" Project
+@enduml
