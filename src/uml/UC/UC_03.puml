@@ -1,0 +1,33 @@
+@startuml
+
+title
+    <font size=18 color=black>UC_03: Управління проєктами 
+    <font size=16 color=black>Діаграма прецедентів
+end title
+
+actor Користувач as user
+
+
+usecase "**UC_03**\nУправління проєктами" as UC_03
+
+usecase "**UC_03.001**\nСтворити проєкт" as UC_03.001 #OOEAOO
+
+usecase "**UC_03.002**\nПереглянути список\nдоступних проєтів" as UC_03.002 #OOEAOO
+
+usecase "**UC_03.002.1**\nПерейти у проєкт" as UC_03.002.1 #OOEAOO
+usecase "**UC_03.002.2**\nПокинути проєкт" as UC_03.002.2  #OOEAOO
+usecase "**UC_03.002.3**\nЗастосувати фільтр" as UC_03.002.3  #OOEAOO
+
+
+user --l-> UC_03
+
+UC_03.001 .u.> UC_03 : extends
+UC_03.002 .u.> UC_03: extends
+
+UC_03.002.1 .u.> UC_03.002 : extends
+UC_03.002.2 .u.> UC_03.002 : extends
+UC_03.002.3 .u.> UC_03.002 : extends
+
+
+
+@enduml
