@@ -20,6 +20,8 @@ package User {
   User.pendingVerification .u.> User.status : instanceOf
   User.registred .u.> User.status : instanceOf
   User.banned .u.> User.status : instanceOf
+
+  note "**User** - поля користувача.\nUser.status визначає права користувача" as User.N1
 }
 
 package Access {
@@ -40,8 +42,9 @@ package Access {
 
   Access "(0,*)"-u-"(1,1)" Role
 
-  note "Власник(owner) має можливості:\n- видалити проєкт\n- змінити власника" as N1
-  Owner -u- N1
+  note "Власник(owner) має можливості:\n- видалити проєкт\n- змінити власника" as Access.N1
+  note "**Access** зв'язує конкретного користувача\nіз конкретним проєктом.\nМістить в собі словник ролей.\n**Наслідування ролей:**\nPM -> Teamlead -> Tester+Developer" as Access.N2
+  Owner -u- Access.N1
 }
 
 package Workspace {
@@ -65,6 +68,16 @@ package Project {
     - опис проєкту
     - силка на проєкт на GitHub
   end note
+
+  note right of metadata.type
+  Тип запису, що дозволяє перевірити 
+  коректність самого запису.
+  Напраклад: email, website, location
+  end note
+
+  note "**Project** - все, що пов'язано з проєктом.\nМає структуру із ТЗ, що містять в собі конкретні завдання.\nНайнажчий елемент ієрархії - артефакт: конкретний\nфайл проєкту на GitHub" as Project.N3
+
+  Project -r- Project.N3
 }
 
 package Specification {
@@ -78,6 +91,7 @@ package Specification {
   Specification.text -l-* Specification
   Specification.datetime -u-* Specification
   Specification.deadline -u-* Specification
+
 }
 
 package Task {
@@ -142,4 +156,3 @@ Specification "(0,*)"-r--"(1,1)" User : author
 Task "(0,*)"-r--"(1,1)" User : author
 Task "(0,*)"-r--"(1,1)" User : assignedTo
 @enduml
-
