@@ -1,52 +1,73 @@
 @startuml
-entity User <<ENTITY>> {
-		email: EMAIL
-		password: PASSWORD
-		username: TEXT
-        avatar: LINK
-        USER.status: NUMBER
-	}
-	
-	entity Access <<ENTITY>> {
-		role: ROLE
-	}
-	
-	entity Project <<ENTITY>> {
-		name: TEXT
-		description: TEXT
-	}
-	
-	entity Specification <<ENTITY>> {
-		name: TEXT
-		text: TEXT
-		datetime: DATE
-        author: USER
-        deadline: DATE
-	}
-	
-	entity Task <<ENTITY>> {
-		name: TEXT
-		text: TEXT
-        datetime: DATE
-        deadline: DATE
-        author: USER
-        assignedTo: USER
-        TASK.status: STATUS
-	}
-	
-	entity Artifact <<ENTITY>> {
-		name: TEXT
-		description: TEXT
-        link: LINK
-        ARTIFACT.status: STATUS
-	}
-	
-    Access "(0,*)"--"(1,1)" User
-    Access "(0,*)"--"(1,1)" Project
+entity Role <<ENTITY>> {
     
-    Task "(0,*)"-u-"(1,1)" Specification
-  
-    Task "(1,1)"--"(0,*)" Artifact
-  
-    Specification "(0,*)"-u-"(1,1)" Project
+}
+
+entity Access <<ENTITY>> {
+
+}
+
+entity User <<ENTITY>> {
+    status: STATUS
+    email: EMAIL
+    password: PASSWORD
+    username: TEXT
+    avatar: LINK
+    
+}
+
+entity Project <<ENTITY>> {
+
+}
+
+entity Metadata <<ENTITY>> {
+    type: TEXT
+    key: TEXT
+    value: TEXT
+}
+
+entity Specification <<ENTITY>> {
+    name: TEXT
+    text: TEXT
+    datetime: DATE
+    deadline: DATE
+}
+
+
+entity Task <<ENTITY>> {
+    status: STATUS
+    name: TEXT
+    text: TEXT
+    datetime: DATE
+    deadline: DATE
+}
+
+entity ArtifactConnector <<ENTITY>> {
+    
+}
+
+entity Artifact <<ENTITY>> {
+    status: STATUS
+    name: TEXT
+    description: TEXT
+    link: TEXT
+}
+
+Access "0,*" -u- "1,1" Role
+Access "0,*" -r- "1,1" Project : "                    "
+Access "0,*" -- "1,1" User
+
+Project "1,1" -r- "0,*" Metadata
+
+Specification "0,*" -u- "1,1" Project
+
+Specification "1,1" -l- "1,1" User: author
+
+Specification "0,*" --- "1,1" Task
+
+Task "1,1" -u- "1,1" User: author
+Task "1,1" -u- "1,1" User: assignedTo
+
+ArtifactConnector "0,*" -l- "1,1" Task
+ArtifactConnector "0,*" -- "1,1" Artifact
 @enduml
