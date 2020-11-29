@@ -11,4 +11,4 @@
 
 ### EER-модель
 
-![alt text](https://github.com/drewg3r/boar/blob/Yevhenii/docs/images/EERDiagram.png?raw=true)
+![alt text](https://github.com/drewg3r/boar/blob/develop/docs/images/EERDiagram.png?raw=true)
