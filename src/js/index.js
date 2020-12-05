@@ -1,7 +1,7 @@
 const models = require('./models/index');
 
 const userMapper = (user) => {
-    console.log(user.UserId + ' | ' + user.username + ' | ' + user.email + ' | ');
+    console.log(user.UserId + ' | ' + user.username + ' | ' + user.email + ' | ' + user.avatar + ' | ');
 };
 
 const projectMapper = (project) => {
@@ -20,21 +20,6 @@ const projectMapper = (project) => {
     console.log('Projects list');
     console.log('--------');
     const ProjectsList = await models.Project.findAll();
-    usersList.map(projectMapper);
+    ProjectsList.map(projectMapper);
 
-
-    console.log('\n\n--------');
-    console.log('Project - User');
-    console.log('--------');
-    const projects = await models.Project.findAll({
-        include: [{
-            model: models.User,
-            through: {
-                attributes: ['ProjectId']
-            }
-        }]
-    });
-    projects.map(project => {
-        console.log('#' + project.ProjectId + ' | ' );
-    })
 })();
