@@ -1,0 +1,32 @@
+{
+  "name": "boar",
+  "version": "1.0.0",
+  "description": "boar is agile-oriented kanban-style Project Management Software(PMS) with lots of ways for customization to make it the best solution for you ",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drewg3r/boar.git"
+  },
+  "keywords": [
+    "project-management-system",
+    "kanban",
+    "agile-board",
+    "pms"
+  ],
+  "author": "IO-91",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drewg3r/boar/issues"
+  },
+  "homepage": "https://github.com/drewg3r/boar#readme",
+  "dependencies": {
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  }
+}
