@@ -1,0 +1,158 @@
+@startuml
+package User {
+  entity "**User**" as User
+  entity User.email
+  entity User.password
+  entity User.status
+  entity User.username
+  entity User.avatar
+
+  object User.pendingVerification  #ffffff
+  object User.registred  #ffffff
+  object User.banned  #ffffff
+
+  User.email -u-* User
+  User.password -u-* User
+  User.status -u-* User
+  User.username -u-* User
+  User.avatar -u-* User
+
+  User.pendingVerification .u.> User.status : instanceOf
+  User.registred .u.> User.status : instanceOf
+  User.banned .u.> User.status : instanceOf
+
+  note "**User** - поля користувача.\nUser.status визначає права користувача" as User.N1
+}
+
+package Access {
+  entity "**Access**" as Access
+  
+  entity "**Role**" as Role
+  object Developer  #ffffff
+  object Tester  #ffffff
+  object Teamlead  #ffffff
+  object PM  #ffffff
+  object Owner  #ffffff
+
+  Developer ..> Role : instanceOf 
+  Tester ..> Role : instanceOf 
+  Teamlead ..> Role : instanceOf 
+  PM ..> Role : instanceOf 
+  Owner ..> Role : instanceOf
+
+  Access "(0,*)"-u-"(1,1)" Role
+
+  note "Власник(owner) має можливості:\n- видалити проєкт\n- змінити власника" as Access.N1
+  note "**Access** зв'язує конкретного користувача\nіз конкретним проєктом.\nМістить в собі словник ролей.\n**Наслідування ролей:**\nPM -> Teamlead -> Tester+Developer" as Access.N2
+  Owner -u- Access.N1
+}
+
+package Workspace {
+
+package Project {
+  entity "**Project**" as Project
+  entity Project.metadata
+  entity metadata.key
+  entity metadata.value
+  entity metadata.type
+
+  Project.metadata "(0,*)"--"(1,1)" Project
+
+  metadata.key --* Project.metadata
+  metadata.value --* Project.metadata
+  metadata.type --* Project.metadata
+
+  note right of Project.metadata
+  Обов'язкові поля:
+    - назва проєкту
+    - опис проєкту
+    - силка на проєкт на GitHub
+  end note
+
+  note right of metadata.type
+  Тип запису, що дозволяє перевірити 
+  коректність самого запису.
+  Напраклад: email, website, location
+  end note
+
+  note "**Project** - все, що пов'язано з проєктом.\nМає структуру із ТЗ, що містять в собі конкретні завдання.\nНайнажчий елемент ієрархії - артефакт: конкретний\nфайл проєкту на GitHub" as Project.N3
+
+  Project -r- Project.N3
+}
+
+package Specification {
+  entity "**Specification**" as Specification
+  entity Specification.name
+  entity Specification.text
+  entity Specification.datetime
+  entity Specification.deadline
+
+  Specification.name -r-* Specification
+  Specification.text -l-* Specification
+  Specification.datetime -u-* Specification
+  Specification.deadline -u-* Specification
+
+}
+
+package Task {
+  entity "**Task**" as Task
+  entity Task.name
+  entity Task.text
+  entity Task.datetime
+  entity Task.status
+  entity Task.deadline
+
+  object Task.inDevelopment  #ffffff
+  object Task.pendingTesting  #ffffff
+  object Task.Testing  #ffffff
+  object Task.pendingReview  #ffffff
+  object Task.Done  #ffffff
+
+  Task.name -u-* Task
+  Task.text -u-* Task
+  Task.datetime -u-* Task
+  Task.status -u-* Task
+  Task.deadline -u-* Task
+
+  Task.inDevelopment .u.> Task.status : instanceOf 
+  Task.pendingTesting .u.> Task.status : instanceOf 
+  Task.Testing .u.> Task.status : instanceOf 
+  Task.pendingReview .u.> Task.status : instanceOf 
+  Task.Done .u.> Task.status : instanceOf
+}
+
+entity "**ArtifactConnector**" as ArtifactConnector
+
+package Artifact {
+  entity "**Artifact**" as Artifact
+  entity Artifact.name
+  entity Artifact.description
+  entity Artifact.link
+  entity Artifact.status
+
+  object Artifact.created  #ffffff
+  object Artifact.notCreated  #ffffff
+
+  Artifact.name -u-* Artifact
+  Artifact.description -u-* Artifact
+  Artifact.link -u-* Artifact
+  Artifact.status -u-* Artifact
+
+  Artifact.created .u.> Artifact.status : instanceOf 
+  Artifact.notCreated .u.> Artifact.status : instanceOf
+}
+
+  Project "(1,1)"-d-"(0,*)" Specification
+  Specification "(1,1)"--d-"(0,*)" Task
+  Task "(1,1)"--d-"(0,*)" ArtifactConnector
+  ArtifactConnector "(0,*)"--d-"(1,1)" Artifact
+
+}
+
+Access "(0,*)"-l-"(1,1)" Project
+Access "(0,*)"-d-"(1,1)" User
+
+Specification "(0,*)"-r--"(1,1)" User : author
+Task "(0,*)"-r--"(1,1)" User : author
+Task "(0,*)"-r--"(1,1)" User : assignedTo
+@enduml
